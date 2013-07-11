@@ -1,0 +1,8 @@
+// C4D-StringResource
+// Identifier	Text
+
+STRINGTABLE
+{
+	IDS_TSP				"Maze Trace";
+	IDS_POINTGENERATOR			"Point Generator";
+}

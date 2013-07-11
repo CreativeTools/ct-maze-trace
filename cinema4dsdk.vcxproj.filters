@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Code">
+      <UniqueIdentifier>{e5029812-cd57-425f-aee5-070630579fd7}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Code\object">
+      <UniqueIdentifier>{10aebb43-b737-421d-a11f-b0d441b3fbd1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Main.cpp">
+      <Filter>Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="source\kd_tree.cpp">
+      <Filter>Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="source\object\pointGenerator.cpp">
+      <Filter>Source Code\object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\object\tsp.cpp">
+      <Filter>Source Code\object</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\kd_tree.h">
+      <Filter>Source Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

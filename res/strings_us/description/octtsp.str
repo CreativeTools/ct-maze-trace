@@ -1,0 +1,7 @@
+STRINGTABLE Octtsp
+{
+	Octtsp							"TSP Object";
+
+	CTTSPOBJECT_MAXSEG		"Maximum Segment Length";
+	CTTSPOBJECT_REL			"Relative";
+}
