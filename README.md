@@ -6,7 +6,7 @@
 ###[Video](https://vimeo.com/70096750)
 
 ##Compability
-The plugin has only been tested with C4D R14.
+The plugin has been compiled with the R12 sdk and should be compatible with C4D R12, R13 and R14. However, it has only been tested with C4D R14.
 
 ##Installation
 Unzip the folder to your _CINEMA/plugins/_ folder and restart CINEMA.
