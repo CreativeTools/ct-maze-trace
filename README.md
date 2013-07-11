@@ -2,7 +2,7 @@
 =============
 
 #[Download](https://github.com/CreativeTools/ct-maze-trace/archive/master.zip)
-![Screenshot](https://raw.github.com/CreativeTools/ct-softbox-shader/master/screenshot.png)
+![Screenshot](https://raw.github.com/CreativeTools/ct-maze-trace/master/screenshot.png)
 ###[Video](https://vimeo.com/70096750)
 
 ##Compability
@@ -18,7 +18,7 @@ The plugin contains two objects that can be found under the _plugins->Maze Trace
 A generator (place objects under it) that takes polygon objects and connects their points in interesting ways (it tries naïvely to solve the Traveling Salesman Problem by connecting each point to its nearest neighbor).
 
 ###Point Generator
-A helper object that generates random points on the surface of an input object. Since the output object only consists of points it will not show up in the 3d view.
+A helper object that generates random points on the surface of an input object. Since the output object only consists of points it will not show up in the 3d view unless you use it as an input to another generator, such as the _Maze Trace_.
 
 ##Settings
 ###Maze Trace
