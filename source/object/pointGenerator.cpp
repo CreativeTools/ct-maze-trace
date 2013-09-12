@@ -97,7 +97,7 @@ BaseObject *PointGeneratorData::GetVirtualObjects(BaseObject *op, HierarchyHelp 
 	GeDynamicArray<PolygonObject *> objs;
 	GeDynamicArray<Matrix> matrices;
 	DoRecursion(op,child, ml, objs, matrices);
-	GeDynamicArray<GeDynamicArray<Real>> faceAreas(objs.GetCount());
+	GeDynamicArray<GeDynamicArray<Real> > faceAreas(objs.GetCount());
 	GeDynamicArray<Real> objAreas;
 	Real totalArea = 0.;
 	for(LONG i=0;i<objs.GetCount();i++){

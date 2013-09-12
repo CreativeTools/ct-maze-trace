@@ -1,0 +1,209 @@
+// !$*UTF8*$!
+{
+	130955DF17E26E77008E0ED0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13C571A817E26CD00049A6DD /* pointGenerator.cpp */;
+		name = "pointGenerator.cpp: 32";
+		rLen = 0;
+		rLoc = 976;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 0;
+	};
+	13C5717417E262970049A6DD /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	13C5717517E262970049A6DD /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	13C5717817E262BF0049A6DD /* pointGenerator.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 2492}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 18}";
+		};
+	};
+	13C5717C17E262E00049A6DD /* kd_tree.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 2828}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{3264, 1232}";
+		};
+	};
+	13C5717D17E262E00049A6DD /* kd_tree.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 661}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 669}";
+		};
+	};
+	13C571A817E26CD00049A6DD /* pointGenerator.cpp */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.cpp;
+		name = pointGenerator.cpp;
+		path = "/Applications/MAXON/CINEMA 4D R12/plugins/ct-maze-trace-master/source/object/pointGenerator.cpp";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1026, 2478}}";
+			sepNavSelRange = "{89, 0}";
+			sepNavVisRange = "{0, 1120}";
+		};
+	};
+	13C571B317E26D160049A6DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13C5717D17E262E00049A6DD /* kd_tree.h */;
+		name = "kd_tree.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 669;
+		vrLoc = 0;
+	};
+	13C571B417E26D160049A6DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13C5717C17E262E00049A6DD /* kd_tree.cpp */;
+		name = "kd_tree.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1232;
+		vrLoc = 3264;
+	};
+	13C571B517E26D160049A6DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13C5717817E262BF0049A6DD /* pointGenerator.cpp */;
+		name = "pointGenerator.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 18;
+		vrLoc = 0;
+	};
+	13C571B617E26D160049A6DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13C5717817E262BF0049A6DD /* pointGenerator.cpp */;
+		name = "pointGenerator.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 18;
+		vrLoc = 0;
+	};
+	13C571B717E26D160049A6DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13C5717D17E262E00049A6DD /* kd_tree.h */;
+		name = "kd_tree.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 669;
+		vrLoc = 0;
+	};
+	13C571B817E26D160049A6DD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13C5717C17E262E00049A6DD /* kd_tree.cpp */;
+		name = "kd_tree.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1232;
+		vrLoc = 3264;
+	};
+	13DBDEB517E273D40060C9FD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 13DBDEB617E273D40060C9FD /* pointGenerator.cpp */;
+		name = "pointGenerator.cpp: 4";
+		rLen = 0;
+		rLoc = 89;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 0;
+	};
+	13DBDEB617E273D40060C9FD /* pointGenerator.cpp */ = {
+		isa = PBXFileReference;
+		name = pointGenerator.cpp;
+		path = "/Applications/MAXON/CINEMA 4D R12/plugins/ct-maze-trace-master/source/object/pointGenerator.cpp";
+		sourceTree = "<absolute>";
+	};
+	65E5168A083D10D0005BFD9A /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeTarget = 65E51692083D10D0005BFD9A /* cinema4dsdk */;
+		addToTargets = (
+			65E51692083D10D0005BFD9A /* cinema4dsdk */,
+		);
+		codeSenseManager = 13C5717517E262970049A6DD /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = 1;
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					572,
+					466.20849609375,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					848,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					862,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 400716748;
+			PBXWorkspaceStateSaveDate = 400716748;
+		};
+		perUserProjectItems = {
+			130955DF17E26E77008E0ED0 /* PBXTextBookmark */ = 130955DF17E26E77008E0ED0 /* PBXTextBookmark */;
+			13C571B317E26D160049A6DD /* PBXTextBookmark */ = 13C571B317E26D160049A6DD /* PBXTextBookmark */;
+			13C571B417E26D160049A6DD /* PBXTextBookmark */ = 13C571B417E26D160049A6DD /* PBXTextBookmark */;
+			13C571B517E26D160049A6DD /* PBXTextBookmark */ = 13C571B517E26D160049A6DD /* PBXTextBookmark */;
+			13C571B617E26D160049A6DD /* PBXTextBookmark */ = 13C571B617E26D160049A6DD /* PBXTextBookmark */;
+			13C571B717E26D160049A6DD /* PBXTextBookmark */ = 13C571B717E26D160049A6DD /* PBXTextBookmark */;
+			13C571B817E26D160049A6DD /* PBXTextBookmark */ = 13C571B817E26D160049A6DD /* PBXTextBookmark */;
+			13DBDEB517E273D40060C9FD /* PBXTextBookmark */ = 13DBDEB517E273D40060C9FD /* PBXTextBookmark */;
+		};
+		sourceControlManager = 13C5717417E262970049A6DD /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	65E51692083D10D0005BFD9A /* cinema4dsdk */ = {
+		activeExec = 0;
+	};
+}
