@@ -6,8 +6,6 @@
 ###[Video](https://vimeo.com/70096750)
 
 ##Compability
-*The OSX version was flawed because of incorrect compilation settings and has been removed. If anyone has XCode installed and would like to help recompile the plugin please contact vidar.nelson[at]gmail.com*  
-  
 The plugin has been compiled with the R12 sdk and should be compatible with C4D R12, R13 and R14. However, it has only been tested with C4D R14.
 
 ##Installation
