@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65E51692083D10D0005BFD9A"
-               BuildableName = "cinema4dsdk.dylib"
-               BlueprintName = "cinema4dsdk"
-               ReferencedContainer = "container:cinema4dsdk.xcodeproj">
+               BuildableName = "ct-maze-trace.dylib"
+               BlueprintName = "ct-maze-trace"
+               ReferencedContainer = "container:ct-maze-trace.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

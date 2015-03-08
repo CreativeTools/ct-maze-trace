@@ -58,7 +58,7 @@
 		6553A1DA0926F00F0034739A /* _api_debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = _api_debug.xcconfig; path = ../../resource/_api_lib/_api_debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		6553A1DB0926F00F0034739A /* _api_release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = _api_release.xcconfig; path = ../../resource/_api_lib/_api_release.xcconfig; sourceTree = SOURCE_ROOT; };
 		65636BEF08E5922100FBAB34 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		65E51693083D10D0005BFD9A /* cinema4dsdk.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = cinema4dsdk.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		65E51693083D10D0005BFD9A /* ct-maze-trace.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "ct-maze-trace.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 		65E51694083D10D0005BFD9A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65E51693083D10D0005BFD9A /* cinema4dsdk.dylib */,
+				65E51693083D10D0005BFD9A /* ct-maze-trace.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,9 +142,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		65E51692083D10D0005BFD9A /* cinema4dsdk */ = {
+		65E51692083D10D0005BFD9A /* ct-maze-trace */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65450B66085517D80099394F /* Build configuration list for PBXNativeTarget "cinema4dsdk" */;
+			buildConfigurationList = 65450B66085517D80099394F /* Build configuration list for PBXNativeTarget "ct-maze-trace" */;
 			buildPhases = (
 				65E5168D083D10D0005BFD9A /* Headers */,
 				65E5168E083D10D0005BFD9A /* Sources */,
@@ -158,9 +158,9 @@
 			dependencies = (
 				657FF1C90859150C00750201 /* PBXTargetDependency */,
 			);
-			name = cinema4dsdk;
+			name = "ct-maze-trace";
 			productName = "xtensions (Debug)";
-			productReference = 65E51693083D10D0005BFD9A /* cinema4dsdk.dylib */;
+			productReference = 65E51693083D10D0005BFD9A /* ct-maze-trace.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = 65450B6A085517D90099394F /* Build configuration list for PBXProject "cinema4dsdk" */;
+			buildConfigurationList = 65450B6A085517D90099394F /* Build configuration list for PBXProject "ct-maze-trace" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -188,7 +188,7 @@
 			);
 			projectRoot = ../../..;
 			targets = (
-				65E51692083D10D0005BFD9A /* cinema4dsdk */,
+				65E51692083D10D0005BFD9A /* ct-maze-trace */,
 			);
 		};
 /* End PBXProject section */
@@ -274,7 +274,7 @@
 				C4D_ROOTDIR = ../..;
 				OTHER_LDFLAGS = "$(C4D_ROOTDIR)/resource/_api_lib/lib_api_debug.a";
 				PREBINDING = NO;
-				PRODUCT_NAME = cinema4dsdk;
+				PRODUCT_NAME = "ct-maze-trace";
 			};
 			name = Debug;
 		};
@@ -285,14 +285,14 @@
 				C4D_ROOTDIR = ../..;
 				OTHER_LDFLAGS = "$(C4D_ROOTDIR)/resource/_api_lib/lib_api_release.a";
 				PREBINDING = NO;
-				PRODUCT_NAME = cinema4dsdk;
+				PRODUCT_NAME = "ct-maze-trace";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		65450B66085517D80099394F /* Build configuration list for PBXNativeTarget "cinema4dsdk" */ = {
+		65450B66085517D80099394F /* Build configuration list for PBXNativeTarget "ct-maze-trace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65450B67085517D80099394F /* Debug */,
@@ -301,7 +301,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65450B6A085517D90099394F /* Build configuration list for PBXProject "cinema4dsdk" */ = {
+		65450B6A085517D90099394F /* Build configuration list for PBXProject "ct-maze-trace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65450B6B085517D90099394F /* Debug */,
