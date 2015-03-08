@@ -29,7 +29,7 @@ void PluginEnd(void)
 {
 }
 
-Bool PluginMessage(LONG id, void *data)
+Bool PluginMessage(Int32 id, void *data)
 {
 	switch (id)
 	{

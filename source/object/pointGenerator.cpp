@@ -14,16 +14,16 @@ class PointGeneratorData : public ObjectData
 		virtual BaseObject* GetVirtualObjects(BaseObject *op, HierarchyHelp *hh);
 		virtual Bool Init(GeListNode *node);
 
-		static NodeData *Alloc(void) { return gNew PointGeneratorData; }
+		static NodeData *Alloc(void) { return NewObjClear(PointGeneratorData); }
 };
 
 void PointGeneratorData::Transform(PointObject *op, const Matrix &m)
 {
 	Vector	*padr=op->GetPointW();
-	LONG	pcnt=op->GetPointCount(),i;
+	Int32	pcnt=op->GetPointCount(),i;
 	
 	for (i=0; i<pcnt; i++)
-		padr[i]*=m;
+		padr[i] = m * padr[i];
 	
 	op->Message(MSG_UPDATE);
 }
@@ -33,7 +33,7 @@ Bool PointGeneratorData::Init(GeListNode *node)
 	BaseObject		*op   = (BaseObject*)node;
 	BaseContainer *data = op->GetDataInstance();
 
-	data->SetLong(CTPOINTGENERATOR_NUMPOINTS,1000);
+	data->SetInt32(CTPOINTGENERATOR_NUMPOINTS,1000);
 
 	return TRUE;
 }
@@ -87,7 +87,7 @@ BaseObject *PointGeneratorData::GetVirtualObjects(BaseObject *op, HierarchyHelp 
 	StatusSetText("Filtering Points");
 
 	BaseContainer *data = op->GetDataInstance();
-	LONG numPoints = data->GetLong(CTPOINTGENERATOR_NUMPOINTS,1000);
+	Int32 numPoints = data->GetInt32(CTPOINTGENERATOR_NUMPOINTS,1000);
 
 	pp = PolygonObject::Alloc(numPoints,0);
 	if (!pp){
@@ -97,22 +97,22 @@ BaseObject *PointGeneratorData::GetVirtualObjects(BaseObject *op, HierarchyHelp 
 	GeDynamicArray<PolygonObject *> objs;
 	GeDynamicArray<Matrix> matrices;
 	DoRecursion(op,child, ml, objs, matrices);
-	GeDynamicArray<GeDynamicArray<Real> > faceAreas(objs.GetCount());
-	GeDynamicArray<Real> objAreas;
-	Real totalArea = 0.;
-	for(LONG i=0;i<objs.GetCount();i++){
+	GeDynamicArray<GeDynamicArray<Float> > faceAreas(objs.GetCount());
+	GeDynamicArray<Float> objAreas;
+	Float totalArea = 0.;
+	for(Int32 i=0;i<objs.GetCount();i++){
 		PolygonObject *obj = objs[i];
-		Real area = 0.;
-		for(LONG ii=0;ii<obj->GetPolygonCount();ii++){
+		Float area = 0.;
+		for(Int32 ii=0;ii<obj->GetPolygonCount();ii++){
 			const CPolygon &poly = obj->GetPolygonR()[ii];
 			const Vector *objPoints = obj->GetPointR();
 			Vector a = objPoints[poly.b] - objPoints[poly.a];
 			Vector b = objPoints[poly.c] - objPoints[poly.a];
-			area += 0.5*Abs(a.Cross(b).GetLength());
+			area += 0.5*Abs(Cross(a,b).GetLength());
 			if(poly.c != poly.d){
 				a = objPoints[poly.b] - objPoints[poly.a];
 				b = objPoints[poly.d] - objPoints[poly.a];
-				area += 0.5*Abs(a.Cross(b).GetLength());
+				area += 0.5*Abs(Cross(a,b).GetLength());
 			}
 			faceAreas[i].Push(area);
 		}
@@ -123,14 +123,14 @@ BaseObject *PointGeneratorData::GetVirtualObjects(BaseObject *op, HierarchyHelp 
 	Vector *ppPoints=pp->GetPointW();
 	rng.Init(1244);
 	if(objs.GetCount() > 0){
-		for(LONG i=0;i<numPoints;i++){
+		for(Int32 i=0;i<numPoints;i++){
 			Matrix *matrix;
-			Real val = rng.Get01() * totalArea;
+			Float val = rng.Get01() * totalArea;
 			PolygonObject *obj = objs[objs.GetCount()-1];
-			LONG objIndex = objs.GetCount()-1;
+			Int32 objIndex = objs.GetCount()-1;
 			matrix = &matrices[objIndex];
-			Real accum = 0.;
-			for(LONG ii=0;ii<objs.GetCount();ii++){
+			Float accum = 0.;
+			for(Int32 ii=0;ii<objs.GetCount();ii++){
 				accum += objAreas[ii];
 				if(val <= accum){
 					obj = objs[ii];
@@ -141,8 +141,8 @@ BaseObject *PointGeneratorData::GetVirtualObjects(BaseObject *op, HierarchyHelp 
 			}
 			val = rng.Get01()*objAreas[objIndex];
 			const CPolygon *poly = &obj->GetPolygonR()[obj->GetPolygonCount()-1];
-			LONG faceIndex = obj->GetPolygonCount()-1;
-			for(LONG ii=0;ii<obj->GetPolygonCount()-1;ii++){
+			Int32 faceIndex = obj->GetPolygonCount()-1;
+			for(Int32 ii=0;ii<obj->GetPolygonCount()-1;ii++){
 				if(val <= faceAreas[objIndex][ii]){
 					faceIndex = ii;
 					poly = &obj->GetPolygonR()[ii];
@@ -151,10 +151,10 @@ BaseObject *PointGeneratorData::GetVirtualObjects(BaseObject *op, HierarchyHelp 
 			}
 			const Vector *objPoints = obj->GetPointR();
 			val = rng.Get01();
-			Real otherVal = rng.Get01();
-			LONG a = poly->a;
-			LONG b = poly->b;
-			LONG c = poly->c;
+			Float otherVal = rng.Get01();
+			Int32 a = poly->a;
+			Int32 b = poly->b;
+			Int32 c = poly->c;
 			if(rng.Get11() < 0. && poly->c != poly->d)
 				b = poly->d;
 			val = Sqrt(val);

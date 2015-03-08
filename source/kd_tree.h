@@ -7,18 +7,18 @@
 class KDNode{
 	public:
 		~KDNode();
-		void initInterior(Real splitPos);
-		void initLeaf(const LONG *m_points, LONG m_numPoints);
-		LONG getNearestNeighbor(const GeDynamicArray<Vector> &points, const Vector &point, const GeDynamicArray<LONG> &validPoints, Real &dist, INT depth);
+		void initInterior(Float splitPos);
+		void initLeaf(const Int32 *m_points, Int32 m_numPoints);
+		Int32 getNearestNeighbor(const GeDynamicArray<Vector> &points, const Vector &point, const GeDynamicArray<Int32> &validPoints, Float &dist, INT depth);
 		Bool m_interior;
 		KDNode *m_rChild;
 		union{
 			KDNode *m_lChild;
-			const LONG *m_points;
+			const Int32 *m_points;
 		};
 		union{
-			Real m_splitPos;
-			LONG m_numPoints;
+			Float m_splitPos;
+			Int32 m_numPoints;
 		};
 };
 

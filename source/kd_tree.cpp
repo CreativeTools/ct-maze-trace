@@ -1,13 +1,13 @@
 #include "kd_tree.h"
 #include "ge_sort.h"
 
-class Sorter : public  GeSortAndSearch
+class Sorter : public  GeSortAndSearchEx
 {
 	public:
-		virtual LONG Compare(void* a, void* b)
+		virtual Int32 Compare(void* a, void* b)
 		{
-			Real aa = *((Real *)a);
-			Real bb = *((Real *)b);
+			Float aa = *((Float *)a);
+			Float bb = *((Float *)b);
 			if (aa<bb) return -1;
 			if (aa>bb) return 1;
 			return 0;
@@ -17,16 +17,16 @@ class Sorter : public  GeSortAndSearch
 KDNode::~KDNode()
 {
 	if(m_interior){
-		GeFree(m_lChild);
-		GeFree(m_rChild);
+		DeleteMem(m_lChild);
+		DeleteMem(m_rChild);
 	}
 	else{
-		GeFree(m_points);
+		DeleteMem(m_points);
 	}
 }
 
 void
-KDNode::initInterior(Real splitPos)
+KDNode::initInterior(Float splitPos)
 {
 	m_interior = TRUE;
 	m_splitPos = splitPos;
@@ -35,7 +35,7 @@ KDNode::initInterior(Real splitPos)
 }
 
 void
-KDNode::initLeaf(const LONG *points, LONG numPoints)
+KDNode::initLeaf(const Int32 *points, Int32 numPoints)
 {
 	m_interior = FALSE;
 	m_points = points;
@@ -43,15 +43,15 @@ KDNode::initLeaf(const LONG *points, LONG numPoints)
 }
 
 static
-Real
-getMedian(const GeDynamicArray<Vector> &points, const LONG *pnts, LONG numPoints, Random &rng, INT axis, Sorter &sorter)
+Float
+getMedian(const GeDynamicArray<Vector> &points, const Int32 *pnts, Int32 numPoints, Random &rng, INT axis, Sorter &sorter)
 {
-	LONG maxSamples = 20;
-	LONG numSamples = numPoints < maxSamples ? numPoints : maxSamples;
-	Real* samples = GeAllocType(Real,numSamples);
-	for(LONG i=0;i<numSamples;i++){
-		Real val = rng.Get01();
-		LONG a = val * (numPoints-1);
+	Int32 maxSamples = 20;
+	Int32 numSamples = numPoints < maxSamples ? numPoints : maxSamples;
+	Float* samples = NewMemClear(Float,numSamples);
+	for(Int32 i=0;i<numSamples;i++){
+		Float val = rng.Get01();
+		Int32 a = val * (numPoints-1);
 		switch(axis){
 			case 0:
 				samples[i] = points[pnts[a]].x;
@@ -65,24 +65,24 @@ getMedian(const GeDynamicArray<Vector> &points, const LONG *pnts, LONG numPoints
 		}
 		
 	}
-	sorter.Sort(samples,numSamples,sizeof(Real));
-	Real ret = samples[numSamples/2];
-	GeFree(samples);
+	sorter.Sort(samples,numSamples,sizeof(Float));
+	Float ret = samples[numSamples/2];
+	DeleteMem(samples);
 	return ret;
 }
 
 static
 KDNode *
-recursiveBuild(const GeDynamicArray<Vector> &points, const LONG *pnts, LONG numPoints, Random &rng, INT depth, Sorter &sorter)
+recursiveBuild(const GeDynamicArray<Vector> &points, const Int32 *pnts, Int32 numPoints, Random &rng, INT depth, Sorter &sorter)
 {
-	KDNode *node =GeAllocType(KDNode,1);
-	LONG minNodeEntries = 4;
-	LONG maxDepth = 10;
+	KDNode *node =NewMemClear(KDNode,1);
+	Int32 minNodeEntries = 4;
+	Int32 maxDepth = 10;
 	if(numPoints > minNodeEntries && depth < maxDepth){
 		INT axis = depth%3;
-		Real splitPos = getMedian(points,pnts,numPoints,rng,axis,sorter);
-		LONG numLeft = 0;
-		for(LONG i=0;i<numPoints;i++){
+		Float splitPos = getMedian(points,pnts,numPoints,rng,axis,sorter);
+		Int32 numLeft = 0;
+		for(Int32 i=0;i<numPoints;i++){
 			switch(axis){
 				case 0:
 					if(points[pnts[i]].x < splitPos){
@@ -102,12 +102,12 @@ recursiveBuild(const GeDynamicArray<Vector> &points, const LONG *pnts, LONG numP
 			}
 			
 		}
-		LONG *lPoints = GeAllocType(LONG,numLeft);
-		LONG *rPoints = GeAllocType(LONG,numPoints - numLeft);
-		LONG lPos=0;
-		LONG rPos=0;
-		for(LONG i=0;i<numPoints;i++){
-			Real val = 0;
+		Int32 *lPoints = NewMemClear(Int32,numLeft);
+		Int32 *rPoints = NewMemClear(Int32,numPoints - numLeft);
+		Int32 lPos=0;
+		Int32 rPos=0;
+		for(Int32 i=0;i<numPoints;i++){
+			Float val = 0;
 			switch(axis){
 				case 0:
 					val = points[pnts[i]].x;
@@ -131,7 +131,7 @@ recursiveBuild(const GeDynamicArray<Vector> &points, const LONG *pnts, LONG numP
 		node->initInterior(splitPos);
 		node->m_lChild = recursiveBuild(points,lPoints,numLeft,rng,depth+1,sorter);
 		node->m_rChild = recursiveBuild(points,rPoints,numPoints-numLeft,rng,depth+1,sorter);
-		GeFree(pnts);
+		DeleteMem(pnts);
 	}
 	else{
 		node->initLeaf(pnts,numPoints);
@@ -143,23 +143,23 @@ void
 buildKDTree(const GeDynamicArray<Vector> &points, KDNode **nodes, Random &rng)
 {
 	Sorter sorter;
-	LONG *pnts = GeAllocType(LONG,points.GetCount());
-	LONG numPoints = points.GetCount();
-	for(LONG i=0;i<numPoints;i++){
+	Int32 *pnts = NewMemClear(Int32,points.GetCount());
+	Int32 numPoints = points.GetCount();
+	for(Int32 i=0;i<numPoints;i++){
 		pnts[i] = i;
 	}
 	*nodes = recursiveBuild(points,pnts,numPoints,rng,0,sorter);
 }
 
-LONG
-KDNode::getNearestNeighbor(const GeDynamicArray<Vector> &points, const Vector &point, const GeDynamicArray<LONG> &validPoints, Real &minDist, INT depth)
+Int32
+KDNode::getNearestNeighbor(const GeDynamicArray<Vector> &points, const Vector &point, const GeDynamicArray<Int32> &validPoints, Float &minDist, INT depth)
 {
-	LONG closestPoint = -1;
+	Int32 closestPoint = -1;
 	if(m_interior){
 		INT axis = depth%3;
 		KDNode *child = m_rChild;
 		Bool visitLeft = FALSE;
-		Real val = 0.;
+		Float val = 0.;
 		switch(axis){
 			case 0:
 				val = point.x;
@@ -181,13 +181,13 @@ KDNode::getNearestNeighbor(const GeDynamicArray<Vector> &points, const Vector &p
 			if(visitLeft){
 				child = m_rChild;
 			}
-			LONG newPoint = child->getNearestNeighbor(points,point,validPoints,minDist,depth+1);
+			Int32 newPoint = child->getNearestNeighbor(points,point,validPoints,minDist,depth+1);
 			closestPoint = newPoint != -1? newPoint : closestPoint;
 		}
 	}
 	else{
-		for(LONG i=0;i<m_numPoints;i++){
-			Real dist = (point - points[m_points[i]]).GetLength();
+		for(Int32 i=0;i<m_numPoints;i++){
+			Float dist = (point - points[m_points[i]]).GetLength();
 			if(validPoints[m_points[i]] && (dist < minDist || minDist < 0)){
 				minDist = dist;
 				closestPoint = m_points[i];

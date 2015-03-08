@@ -16,16 +16,16 @@ class TSPData : public ObjectData
 		virtual BaseObject* GetVirtualObjects(BaseObject *op, HierarchyHelp *hh);
 		virtual Bool Init(GeListNode *node);
 
-		static NodeData *Alloc(void) { return gNew TSPData; }
+		static NodeData *Alloc(void) { return NewObjClear(TSPData); }
 };
 
 void TSPData::Transform(PointObject *op, const Matrix &m)
 {
 	Vector	*padr=op->GetPointW();
-	LONG	pcnt=op->GetPointCount(),i;
+	Int32	pcnt=op->GetPointCount(),i;
 	
 	for (i=0; i<pcnt; i++)
-		padr[i]*=m;
+		padr[i] = m * padr[i];
 	
 	op->Message(MSG_UPDATE);
 }
@@ -35,7 +35,7 @@ Bool TSPData::Init(GeListNode *node)
 	BaseObject		*op   = (BaseObject*)node;
 	BaseContainer *data = op->GetDataInstance();
 
-	data->SetReal(CTTSPOBJECT_MAXSEG,3.);
+	data->SetFloat(CTTSPOBJECT_MAXSEG,3.);
 	data->SetBool(CTTSPOBJECT_REL,TRUE);
 	return TRUE;
 }
@@ -59,10 +59,10 @@ void TSPData::DoRecursion(BaseObject *op, BaseObject *child, GeDynamicArray<Vect
 				if (!child->GetBit(BIT_CONTROLOBJECT)){
 					if (child->IsInstanceOf(Opoint)){
 						PointObject * pChild = ToPoint(child);
-						LONG pcnt = pChild->GetPointCount();
+						Int32 pcnt = pChild->GetPointCount();
 						const Vector *childVerts = pChild->GetPointR();
-						for(LONG i=0;i<pcnt;i++){
-							points.Push(childVerts[i] * ml);
+						for(Int32 i=0;i<pcnt;i++){
+							points.Push(ml * childVerts[i]);
 						}
 					}
 				}
@@ -87,7 +87,7 @@ BaseObject *TSPData::GetVirtualObjects(BaseObject *op, HierarchyHelp *hh)
 	BaseObject *child = op->GetAndCheckHierarchyClone(hh,orig,HIERARCHYCLONEFLAGS_ASPOLY,&dirty,NULL,FALSE);
 	BaseThread    *bt=hh->GetThread();
 	BaseContainer *data = op->GetDataInstance();
-	Real maxSeg = data->GetReal(CTTSPOBJECT_MAXSEG,3.);
+	Float maxSeg = data->GetFloat(CTTSPOBJECT_MAXSEG,3.);
 	Bool relativeMaxSeg  = data->GetBool(CTTSPOBJECT_REL,TRUE);
 
 	if (!dirty) dirty = op->CheckCache(hh);					
@@ -104,29 +104,29 @@ BaseObject *TSPData::GetVirtualObjects(BaseObject *op, HierarchyHelp *hh)
 	KDNode *kdTree;
 	buildKDTree(points, &kdTree, rng);
 
-	GeDynamicArray<LONG> segments;
+	GeDynamicArray<Int32> segments;
 
 	pp=SplineObject::Alloc(0,SPLINETYPE_LINEAR);
 	if (!pp) return NULL;
 
-	LONG pcnt = points.GetCount();
+	Int32 pcnt = points.GetCount();
 	if(pcnt > 0){
-		GeDynamicArray<LONG> pointList(pcnt);
-		GeDynamicArray<LONG> path(pcnt);
-		LONG currentPoint = 0;
-		for(LONG i=0;i<pcnt;i++){
+		GeDynamicArray<Int32> pointList(pcnt);
+		GeDynamicArray<Int32> path(pcnt);
+		Int32 currentPoint = 0;
+		for(Int32 i=0;i<pcnt;i++){
 			pointList[i] = 1;
 		}
 		path[0] = 0;
 		pointList[0] = 0;
-		LONG currentSeg = 0;
+		Int32 currentSeg = 0;
 		StatusSetText("Connecting Points");
-		Real dist;
-		Real prevDist  = -1.;
-		Real prev2Dist = -1.;
-		for(LONG i=1;i<pcnt;i++){
+		Float dist;
+		Float prevDist  = -1.;
+		Float prev2Dist = -1.;
+		for(Int32 i=1;i<pcnt;i++){
 			dist = -1.;
-			LONG closestPoint = kdTree->getNearestNeighbor(points,points[currentPoint],pointList, dist, 0);
+			Int32 closestPoint = kdTree->getNearestNeighbor(points,points[currentPoint],pointList, dist, 0);
 			if(closestPoint == -1){
 				GePrint("error finding neighbor");
 				pcnt = i-1;
@@ -166,18 +166,18 @@ BaseObject *TSPData::GetVirtualObjects(BaseObject *op, HierarchyHelp *hh)
 		pp->ResizeObject(pcnt,segments.GetCount());
 
 		Segment* seg = pp->GetSegmentW();
-		for(LONG i=0;i<segments.GetCount();i++){
+		for(Int32 i=0;i<segments.GetCount();i++){
 			seg[i].cnt = segments[i];
 			seg[i].closed = FALSE;
 		}
 
 		Vector *padr=pp->GetPointW();
 		
-		for(LONG i=0;i<pcnt;i++){
+		for(Int32 i=0;i<pcnt;i++){
 			padr[i] = points[path[i]];
 		}
 	}
-	GeFree(kdTree);
+	DeleteMem(kdTree);
 	pp->Message(MSG_UPDATE);
 	pp->SetName(op->GetName());
 	StatusClear();

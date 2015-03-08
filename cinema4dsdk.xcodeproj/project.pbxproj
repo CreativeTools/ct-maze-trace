@@ -52,7 +52,7 @@
 /* Begin PBXFileReference section */
 		13C5717817E262BF0049A6DD /* pointGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pointGenerator.cpp; sourceTree = "<group>"; };
 		13C5717917E262BF0049A6DD /* tsp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tsp.cpp; sourceTree = "<group>"; };
-		13C5717C17E262E00049A6DD /* kd_tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = kd_tree.cpp; sourceTree = "<group>"; };
+		13C5717C17E262E00049A6DD /* kd_tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = kd_tree.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		13C5717D17E262E00049A6DD /* kd_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kd_tree.h; sourceTree = "<group>"; };
 		653A926E0858FEB50017BCBC /* _api.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = _api.xcodeproj; path = ../../resource/_api_lib/_api.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6553A1DA0926F00F0034739A /* _api_debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = _api_debug.xcconfig; path = ../../resource/_api_lib/_api_debug.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -168,9 +168,15 @@
 /* Begin PBXProject section */
 		65E5168A083D10D0005BFD9A /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 65450B6A085517D90099394F /* Build configuration list for PBXProject "cinema4dsdk" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 65E51686083D10D0005BFD9A;
 			productRefGroup = 65E51694083D10D0005BFD9A /* Products */;
 			projectDirPath = "";
